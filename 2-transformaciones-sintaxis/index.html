@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transformaciones CSS</title>
+  <style type="text/css">
+
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .pelota {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #99c84a;
+      
+      /*posicion absoluta con respecto a su elemento padre mas cercano con posicion relativa*/
+      position: absolute;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+
+      transition: 1s;
+    }
+
+    .pelota.a {
+      background: #99c84a;
+      left: 0;
+    }
+
+    .pelota.b {
+      background: blue;
+      right: 0;
+    }
+
+    .canasta {
+      border: 1px solid blue;
+      position: relative;
+      height: 100px;
+      width: 100%;
+      /*transform: rotar | sesgar | posicion | tamaño;*/
+      transform: rotate(5deg)  skew(10deg) translate(100px) scale(1.5);
+    }
+
+    .canasta:hover .pelota.a {
+      left: calc(50% - 100px);
+    }
+
+    .canasta:hover .pelota.b {
+      right: calc(50% - 100px);
+    }
+  </style>
+</head>
+<body>
+  <div class="canasta">
+    <div class="pelota a">Hola</div>
+    <div class="pelota b">Mundo</div>
+  </div>
+</body>
+</html>
