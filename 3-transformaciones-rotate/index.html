@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transformacion rotacion</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    .container {
+      border: 1px solid red;
+    }
+
+    .container:hover .cuadrado {
+      /*rotacion en sentido de las agujas del reloj*/
+      /*transform: rotate(45deg);*/
+
+      /*rotacion en sentido contrario*/
+      /*transform: rotate(-45deg);*/
+
+      /*rotacion en el eje X*/
+      /*transform: rotateX(45deg);*/
+
+      /*rotacion en el eje Y*/
+      /*transform: rotateY(45deg);*/
+
+      /*rotacion en el eje Z*/
+      /*transform: rotateZ(45deg);*/
+
+      /*rotacion en todos los ejes*/
+      /*transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);*/
+
+      /*forma abreviada de hacer una rotacion 3D*/
+      /*transform: rotate3d(x, y, z, rotate);*/
+      transform: rotate3d(1, 1, 1, 45deg);
+    }
+
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="cuadrado">
+    Hola Mundo!
+  </div>
+</div>
+</body>
+</html>
