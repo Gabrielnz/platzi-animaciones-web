@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animaciones - sintaxis</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    .container {
+      border: 1px solid red;
+      width: 100%;
+    }
+
+    .container:hover .cuadrado {
+      /*paused: pausa la animacion*/
+      animation-play-state: paused;
+    }
+
+    .cuadrado {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      
+      /*************************/
+      /*Propiedades necesarias*/
+
+      /*Nombre de la animacion*/
+      animation-name: cuadrado;
+      
+      /*Duracion de la animacion*/
+      animation-duration: 2s;
+
+      /*************************/
+      /*Propiedades opcionales*/
+
+      /*lo que tarda la animacion en ocurrir*/
+      /*animation-delay: 1s;*/
+      
+      /*la cantidad de veces que se va a repetir la animacion*/
+      /*animation-iteration-count: 2;*/
+      /*Si queremos que la animacion sea infinita, usamos infinite*/
+      animation-iteration-count: infinite;
+
+      /*de que forma va a ocurrir la animacion*/
+      /*Suave*/
+      animation-timing-function: ease;
+      /*animation-timing-function: ease-in;
+      animation-timing-function: ease-out;
+      animation-timing-function: ease-in-out;*/
+      
+      /*Linear (sin suavizado)*/
+      /*animation-timing-function: linear;*/
+      
+      /*Curva de Bezier*/
+      /*animation-timing-function: cubic-bezier(1, 1, 1, 1);*/
+
+      /*la direccion en la que ocurre la animacion (normal por defecto)*/
+      /*animation-direction: reverse;*/
+      /*De normal a reversa y de reversa a normal, alternadamente*/
+      animation-direction: alternate;
+
+      /*El relleno de la animacion, con esto podemos definir como queremos que se vea el elemento cuando acabe la animacion*/
+      /*forwards: el elemento se queda con las propiedades establecidas al final de la animacion*/
+      animation-fill-mode: forwards;
+
+      /*El estado de la animacion: reproduciendose o en pausa*/
+      /*running: reproduce la animacion, valor por defecto de esta propiedad*/
+      /*animation-play-state: running;*/
+      /*paused: pausa la animacion*/
+      /*animation-play-state: paused;*/
+
+      /*para utilizar propiedades de posicion (left, right, top, bottom),
+      el elemento debe tener una posicion relativa o absoluta*/
+      position: relative;
+    }
+
+    /*Definicion de lo que va a hacer la animacion*/
+    @keyframes cuadrado {
+      /*Lo que va a ocurrir al inicio de la duracion*/
+      0% {
+        /*opacity: 1;*/
+        left: 0;
+      }
+
+      /*Lo que va a ocurrir al final de la duracion*/
+      100% {
+        /*opacity: 0;*/
+        left: calc(100% - 200px - 40px);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="cuadrado">
+    Hola Mundo!
+  </div>
+</div>
+</body>
+</html>
