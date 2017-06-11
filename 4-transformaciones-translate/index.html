@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transformacion traslacion y perspectiva</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+
+      /*Perspectiva, ponerle un contexto 3D al elemento*/
+      perspective: 200px;
+      /*El punto de origen de la perspectiva, por defecto esta en el centro*/
+      perspective-origin: center;
+      /*perspective-origin: x y;*/
+      /*perspective-origin: top;*/
+      /*perspective-origin: bottom;*/
+      /*perspective-origin: left;*/
+      /*perspective-origin: right;*/
+      /*perspective-origin: top right;*/
+      /*perspective-origin: bottom left;*/
+    }
+
+    .container {
+      border: 1px solid red;
+    }
+
+    .container:hover .cuadrado {
+      
+      /*transform: translate(x);*/
+      /*Traslada el elemento 100 pixeles hacia la derecha en el eje x*/
+      /*transform: translate(100px);*/
+
+      /*Traslada el elemento 100 pixeles hacia la izquierda en el eje x*/
+      /*transform: translate(-100px);*/
+
+      /*transform: translate(x, y);*/
+      /*Traslada el elemento 100 pixeles hacia la derecha en el eje x
+        y hacia abajo en el eje y*/
+      /*transform: translate(100px, 100px);*/
+
+      /*Traslada el elemento 100 pixeles hacia la izquierda en el eje x
+        y hacia arriba en el eje y*/
+      /*transform: translate(-100px, -100px);*/
+
+      /*Si queremos ser mas especificos con respecto a la traslacion*/
+      
+      /*transform: translateX(100px);*/
+      /*transform: translateY(100px);*/
+
+      /*Para trasladar el eje Z, el elemento debe manejar una perspectiva 3D*/
+      /*transform: translateZ(100px);*/
+
+      /*Traslacion abreviada*/
+      /*transform: translate3d(x, y, z);*/
+      transform: translate3d(0, 0, 100px);
+    }
+
+    .cuadrado {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="cuadrado">
+    Hola Mundo!
+  </div>
+</div>
+</body>
+</html>
