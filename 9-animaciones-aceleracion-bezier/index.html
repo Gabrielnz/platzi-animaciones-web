@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animaciones - aceleracion y curva de bezier</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    .container {
+      border: 1px solid red;
+      width: 100%;
+    }
+
+    .container:hover .circulo {
+      /*paused: pausa la animacion*/
+      animation-play-state: paused;
+    }
+
+    .circulo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      
+      /*************************/
+      /*Propiedades necesarias*/
+
+      /*Nombre de la animacion*/
+      animation-name: circulo;
+      
+      /*Duracion de la animacion*/
+      animation-duration: 2s;
+
+      /*************************/
+      /*Propiedades opcionales*/
+
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+
+      /*de que forma va a ocurrir la aceleracion de la animacion*/
+      /*Suave*/
+      /*animation-timing-function: ease;*/
+      /*animation-timing-function: ease-in;*/
+      /*animation-timing-function: ease-out;*/
+      /*animation-timing-function: ease-in-out;*/
+      /*animation-timing-function: linear;*/
+
+      /*Configurar la cantidad de pasos de la animacion nos permite cambiar la fluidez con la que ocurre la misma*/
+      /*animation-timing-function: steps(5);*/
+      
+      /*Curva de Bezier*/
+      animation-timing-function: cubic-bezier(.83,-0.43,.31,1.36);
+
+      position: relative;
+    }
+
+    /*Definicion de lo que va a hacer la animacion*/
+    @keyframes circulo {
+      /*Lo que va a ocurrir al inicio de la duracion*/
+      0% {
+        /*opacity: 1;*/
+        left: 0;
+      }
+
+      /*Lo que va a ocurrir al final de la duracion*/
+      100% {
+        /*opacity: 0;*/
+        left: calc(100% - 200px - 40px); se resta el ancho del circulo y el margen de lado a lado del circulo
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="circulo">
+    Hola Mundo!
+  </div>
+</div>
+</body>
+</html>
