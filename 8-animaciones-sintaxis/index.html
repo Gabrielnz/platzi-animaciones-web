@@ -18,12 +18,12 @@
       width: 100%;
     }
 
-    .container:hover .cuadrado {
+    .container:hover .circulo {
       /*paused: pausa la animacion*/
       animation-play-state: paused;
     }
 
-    .cuadrado {
+    .circulo {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,7 +37,7 @@
       /*Propiedades necesarias*/
 
       /*Nombre de la animacion*/
-      animation-name: cuadrado;
+      animation-name: circulo;
       
       /*Duracion de la animacion*/
       animation-duration: 2s;
@@ -87,7 +87,7 @@
     }
 
     /*Definicion de lo que va a hacer la animacion*/
-    @keyframes cuadrado {
+    @keyframes circulo {
       /*Lo que va a ocurrir al inicio de la duracion*/
       0% {
         /*opacity: 1;*/
@@ -97,14 +97,14 @@
       /*Lo que va a ocurrir al final de la duracion*/
       100% {
         /*opacity: 0;*/
-        left: calc(100% - 200px - 40px);
+        left: calc(100% - 200px - 40px); se resta el ancho del circulo y el margen de lado a lado del circulo
       }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="cuadrado">
+  <div class="circulo">
     Hola Mundo!
   </div>
 </div>
