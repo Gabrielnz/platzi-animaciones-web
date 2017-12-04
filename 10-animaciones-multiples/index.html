@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiples animaciones</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    .container {
+      border: 1px solid red;
+      width: 100%;
+    }
+
+    .container:hover .circulo {
+      /*paused: pausa la animacion*/
+      animation-play-state: paused;
+    }
+
+    .circulo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      
+      /*************************/
+      /*Propiedades necesarias*/
+
+      /*Nombre de la animacion*/
+      animation-name: circulo, rebote;
+      
+      /*Duracion de la animacion*/
+      animation-duration: 3s, .3s;
+
+      /*************************/
+      /*Propiedades opcionales*/
+
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: linear, ease-in-out;
+
+      position: relative;
+    }
+
+    @keyframes circulo {
+      0% {
+        left: 0;
+      }
+      100% {
+        left: calc(100% - 200px - 40px);
+      }
+    }
+
+    @keyframes rebote {
+      /*0%*/
+      from {
+        transform: translateY(0);
+      }
+
+      /*100%*/
+      to {
+        transform: translateY(100px) scale(1, .8);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="circulo">
+    Hola Mundo!
+  </div>
+</div>
+</body>
+</html>
