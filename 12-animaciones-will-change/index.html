@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Optimizar render con will-change</title>
+  <style>
+
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+
+    .container {
+      border: 1px solid red;
+      width: 100%;
+    }
+
+    .container:hover .circulo {
+      /*paused: pausa la animacion*/
+      animation-play-state: paused;
+    }
+
+    .circulo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      border-radius: 50%;
+      position: relative;
+
+      /*animation-name: circulo, rebote;*/
+      /*animation-duration: 3s, .3s;*/
+      animation-iteration-count: infinite, 20;
+      animation-direction: alternate;
+      animation-timing-function: linear, ease-in-out;
+
+      /*optimizando el renderizado de opacity y transform*/
+      will-change: opacity, transform;
+      transition: 3s;
+    }
+
+    .circulo:hover {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    @keyframes circulo {
+      0% {
+        left: 0;
+      }
+      100% {
+        left: calc(100% - 200px - 40px);
+      }
+    }
+
+    @keyframes rebote {
+      /*0%*/
+      from {
+        transform: translateY(0);
+      }
+
+      /*100%*/
+      to {
+        transform: translateY(100px) scale(1, .8);
+      }
+    }
+
+    @keyframes escalera {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(500px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="circulo" class="circulo">
+      Hola Mundo!
+    </div>
+  </div>
+  <script type="text/javascript">
+    const circulo = document.getElementById('circulo');
+
+    circulo.addEventListener('animationend', (event) => {
+      console.log(event.animationName);
+      if (event.animationName === 'rebote') {
+        circulo.style.animationName = 'circulo escalera';
+        circulo.style.animationDuration = '3s';
+      }
+    });
+  </script>
+</body>
+</html>
