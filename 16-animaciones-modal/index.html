@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creando un Modal</title>
+</head>
+<style type="text/css">
+  body {
+    font-family: Arial;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .modal {
+    width: 500px;
+    background: white;
+    padding: 2em;
+    border-radius: .5em;
+    text-align: center;
+    position: absolute;
+  }
+
+  /*Opacidad para el fondo al mostrarse el modal*/
+  .overlay {
+    background: rgba(0, 0, 0, .8);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1.1s ease-in;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .btn {
+    text-align: center;
+    background: lightgray;
+    padding: .6em .8em .8em;
+    border: none;
+    color: white;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: inset 0 -.2em rgba(0, 0, 0, .2);
+    outline: 0;
+    transition: .2s;
+    will-change: transform;
+  }
+
+  .btn.primary {
+    background: #7dc800;
+  }
+
+  .btn.warning {
+    background: #ff463b;
+  }
+
+  .btn:active {
+    transform: scale(.9);
+  }
+
+  .close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: lightgray;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+
+  /*Animacion de entrada de modal*/
+  @keyframes modalIn {
+    0% {
+      transform: translateY(-3000px);
+    }
+    60% {
+      transform: translateY(25px);
+    }
+    75% {
+      transform: translateY(-10px);
+    }
+    90% {
+      transform: translateY(5px);
+    }
+  }
+
+  /*Animacion de salida de modal*/
+  @keyframes modalOut {
+    0% {
+      transform: translateY(5);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+    75% {
+      transform: translateY(25px);
+    }
+    100% {
+      transform: translateY(-3000px);
+    }
+  }
+</style>
+<body>
+  <img src="platzi-bg.png" class="background" id="background">
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal">
+      <h1>Atención!</h1>
+      <p>Estás a punto de crear una ventana de modal muy chévere.</p>
+      <p>Te gustó?</p>
+      <div class="modal-buttons">
+        <button class="btn primary" id="accept-modal">Sí, está genial</button>
+        <button class="btn warning" id="cancel-modal">No, :(</button>
+      </div>
+      <div class="close" id="close-modal">&times;</div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const background = document.getElementById('background');
+    const acceptButton = document.getElementById('accept-modal');
+    const cancelButton = document.getElementById('cancel-modal');
+    const closeButton = document.getElementById('close-modal');
+    const modal = document.getElementById('modal');
+    const overlay = document.getElementById('overlay');
+    let showModal = false;
+
+    function modalIn() {
+      /*Cambiando la animacion del modal a la animacion de entrada*/
+      modal.style.animation = 'modalIn .8s forwards';
+      /*Activando el overlay*/
+      overlay.classList.add('active');
+    }
+
+    function modalOut() {
+      /*Cambiando la animacion del modal a la animacion de salida*/
+      modal.style.animation = 'modalOut .8s forwards';
+      /*Desactivando el overlay*/
+      overlay.classList.remove('active');
+    }
+
+    background.addEventListener('click', (event) => {
+
+      showModal = !showModal;
+
+      if (showModal) {
+        modalIn();
+      } else {
+        modalOut();
+      }
+    });
+
+    acceptButton.addEventListener('click', modalOut);
+
+    cancelButton.addEventListener('click', modalOut);
+
+    closeButton.addEventListener('click', modalOut);
+
+    overlay.addEventListener('click', (event) => {
+
+      console.log(event);
+
+      /*Si se hizo click en el overlay (no en el modal en si)*/
+      if (event.srcElement.classList.contains('overlay')) {
+        modalOut();
+      }
+
+    });
+  </script>
+</body>
+</html>
